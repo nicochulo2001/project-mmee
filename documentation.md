@@ -10,6 +10,11 @@ This is a list of all the available mechanics and conditions that are currently 
 
 **Description:** This condition will check the lore line specified in `lorenum` (0 being the first line) and compare it with `loretext`. It will return true if both strings match.
 
+### CompareLoreDate
+**Syntax:** `- jscondition{js="CompareLoreDate";threshold=#}`
+
+**Description:** This condition uses the first lore line of an item as a way to check the last time at which the condition was successful. It will then compare the lore time with the current time. If the time elapsed is equal or bigger than the `threshold` (specified in milliseconds), then the skill is successful and the current time is stored.
+
 # Skills
 ### ReplaceLoreLine
 **Syntax:** `- jsmechanic{js="ReplaceLoreLine";lorenum=#;loretext="Content"}`
