@@ -13,7 +13,7 @@ This is a list of all the available mechanics and conditions that are currently 
 ### CompareLoreDate
 **Syntax:** `- jscondition{js="CompareLoreDate";threshold=#}`
 
-**Description:** This condition uses the first lore line of an item as a way to check the last time at which the condition was successful. It will then compare the lore time with the current time. If the time elapsed is equal or bigger than the `threshold` (specified in milliseconds), then the skill is successful and the current time is stored.
+**Description:** This condition uses the first lore line of an item as a way to check the last time at which the condition was successful. It will then compare the lore time with the current time. If the time elapsed is equal or bigger than the `threshold` (specified in milliseconds), then the skill is successful and the current time is stored. This skill requires the item to already have a valid time in the first lore line. You can employ any time, but `Thu Jan 02 1970 01:00:00 GMT+0100 (CET)` is the best baseline (as it is equal to 0 milliseconds).
 
 # Skills
 ### ReplaceLoreLine
