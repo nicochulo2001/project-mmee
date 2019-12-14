@@ -33,3 +33,23 @@ var ReplaceLoreLine=function(data,target,mlc) {
 		return true;
 	}
 }
+
+var CompareLoreDate=function(target,mlc) {
+	var metaContent = target.getItemInHand().getItemMeta();
+        var loreContent = metaContent.getLore();
+	var currentDate = new Date();
+	var currentDateMs = currentDate.getTime();
+	var itemDateSource = loreContent[0];
+	var itemDate = new Date(itemDateSource);
+	var itemDateMs = itemDate.getTime();
+	var dateThreshold = mlc.getString("threshold");
+	if(currentDateMs - dateThreshold > itemDateMs) {
+		loreContent[0] = currentDate.toString();
+		metaContent.setLore(loreContent);
+		target.getItemInHand().setItemMeta(metaContent);
+		return true;
+	}
+	else {
+		return false;
+	}	
+}
