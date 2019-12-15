@@ -22,6 +22,7 @@ This is a list of all the available mechanics and conditions that are currently 
 - `>` will check if your current air value is bigger than `checkvalue`.
 - `=` will check if your current air value matches the `checkvalue`.
 - `<` will check if your current air value is smaller than `checkvalue`.
+
 The default air value (when not submerged underwater) is 300, and when it goes below 0 you start to drown.
 
 # Skills
