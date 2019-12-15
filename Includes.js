@@ -90,7 +90,7 @@ var BasicAirCondition=function(target,mlc) {
 }
 
 var BasicHungerCondition=function(target,mlc) {
-	var foodValue = target.getFoodValue();
+	var foodValue = target.getFoodLevel();
 	var operation = mlc.getString("checktype");
 	var foodCheckValue = mlc.getString("checkvalue");
 	switch (operation) {
