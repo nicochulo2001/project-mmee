@@ -3,6 +3,7 @@ This is a list of all the available mechanics and conditions that are currently 
 - The character `&` must be replaced by `§` (for example, if the lore you wish to match is `&fExample`).
 - It is important to define all the properties of a skill, as that will ensure that no errors occur.
 - If specified, the text must be quoted. Not quoting it will likely result in unintended behaviour.
+- Wherever `#` is used, a number is meant to go. You mustn't include the `#`.
 
 # Conditions
 ### CheckLoreLine
