@@ -41,3 +41,8 @@ The default hunger value is 20.
 **Syntax:** `- jsmechanic{js="ReplaceLoreLine";lorenum=#;loretext="Content"}`
 
 **Description:** This skill will replace the lore line specified in `lorenum` (0 being the first line) with the content of `loretext`. For this skill to work, said lore line must exist (for example, you can't replace the fourth line of lore of an item with two lines of lore).
+
+### SetItemColor
+**Syntax:** `- jsmechanic{js="SetItemColor";color=000000}`
+
+**Description:** This skill will set the color of any dye-able item to the color specified in `color`. You must provide said color's hexadecimal value.
