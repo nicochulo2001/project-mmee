@@ -26,6 +26,16 @@ This is a list of all the mechanics and conditions that are currently available.
 
 The default air value (when not submerged underwater) is 300, and when it goes below 0 you start to drown.
 
+### BasicHungerCondition
+**Syntax:** `- jscondition{js="BasicHungerCondition";checktype=>;checkvalue=#}`
+
+**Description:** This condition checks the hunger level and compares it to `checkvalue`. This check depends on the chosen `checktype`:
+- `>` will check if your current hunger value is bigger than `checkvalue`.
+- `=` will check if your current hunger value matches the `checkvalue`.
+- `<` will check if your current hunger value is smaller than `checkvalue`.
+
+The default hunger value is 20.
+
 # Skills
 ### ReplaceLoreLine
 **Syntax:** `- jsmechanic{js="ReplaceLoreLine";lorenum=#;loretext="Content"}`
