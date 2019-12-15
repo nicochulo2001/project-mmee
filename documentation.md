@@ -15,6 +15,15 @@ This is a list of all the available mechanics and conditions that are currently 
 
 **Description:** This condition uses the first lore line of an item as a way to check the last time at which the condition was successful. It will then compare the lore time with the current time. If the time elapsed is equal or bigger than the `threshold` (specified in milliseconds), then the skill is successful and the current time is stored. This skill requires the item to already have a valid time in the first lore line. You can employ any time, but `Thu Jan 01 1970 01:00:00 GMT+0100 (CET)` is the best baseline (as it is equal to 0 milliseconds).
 
+# BasicAirCondition
+**Syntax:** `- jscondition{js="BasicAirCondition";checktype=>;checkvalue=#}`
+
+**Description:** This condition checks the available air and compares it to `checkvalue`. This check depends on the chosen `checktype`:
+- `>` will check if your current air value is bigger than `checkvalue`.
+- `=` will check if your current air value matches the `checkvalue`.
+- `<` will check if your current air value is smaller than `checkvalue`.
+The default air value (when not submerged underwater) is 300, and when it goes below 0 you start to drown.
+
 # Skills
 ### ReplaceLoreLine
 **Syntax:** `- jsmechanic{js="ReplaceLoreLine";lorenum=#;loretext="Content"}`
