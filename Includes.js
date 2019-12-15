@@ -123,3 +123,15 @@ var BasicHungerCondition=function(target,mlc) {
 			break;
 	}
 }
+
+var SetItemColor=function(data,target,mlc) {
+	var Color = org.bukkit.Color;
+	var metaContent = target.getItemInHand().getItemMeta();
+	var inputContent = mlc.getString("color");
+	var redColor = parseInt(inputContent.substring(0,2), 16);
+	var greenColor = parseInt(inputContent.substring(2,4), 16);
+	var blueColor = parseInt(inputContent.substring(4,6), 16);
+	metaContent.setColor(Color.fromRGB(redColor, greenColor, blueColor));
+	target.getItemInHand().setItemMeta(metaContent);
+	return true;
+}
