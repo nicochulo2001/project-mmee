@@ -53,3 +53,73 @@ var CompareLoreDate=function(target,mlc) {
 		return false;
 	}	
 }
+
+var BasicAirCondition=function(target,mlc) {
+	var airValue = target.getRemainingAir();
+	var operation = mlc.getString("checktype");
+	var airCheckValue = mlc.getString("checkvalue");
+	switch (operation) {
+		case '>':
+			if(airValue > airCheckValue) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			break;
+		case '=':
+			if(airValue == airCheckValue) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			break;
+		case '<':
+			if(airValue < airCheckValue) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			break;
+		default:
+			return false;
+			break;
+	}
+}
+
+var BasicAirCondition=function(target,mlc) {
+	var foodValue = target.getFoodValue();
+	var operation = mlc.getString("checktype");
+	var foodCheckValue = mlc.getString("checkvalue");
+	switch (operation) {
+		case '>':
+			if(foodValue > foodCheckValue) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			break;
+		case '=':
+			if(foodValue == foodCheckValue) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			break;
+		case '<':
+			if(foodValue < foodCheckValue) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			break;
+		default:
+			return false;
+			break;
+	}
+}
