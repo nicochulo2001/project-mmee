@@ -1,5 +1,26 @@
+function slotParser(target,chosenslot) {
+	switch (chosenslot) {
+		case 'HAND':
+			return target.getItemInHand();
+		case 'OFFHAND':
+			return target.getInventory().getItem(40);
+		case 'HELMET':
+			return target.getInventory().getItem(39);
+		case 'CHESTPLATE':
+			return target.getInventory().getItem(38);
+		case 'LEGGINGS':
+			return target.getInventory().getItem(37);
+		case 'BOOTS':
+			return target.getInventory().getItem(36);
+		default:
+			if(isNaN(chosenslot) !== true) { return target.getInventory().getItem(chosenslot); }
+			else { return target.getItemInHand(); }
+	}
+}
+
 var CheckLoreLine=function(target,mlc) {
-        var loreContent = target.getItemInHand().getItemMeta().getLore();
+	var baseContent = slotParser(target,mlc.getString("slot"));
+        var loreContent = baseContent.getItemMeta().getLore();
         var loreTextVal = mlc.getString("loretext");
         loreTextVal = loreTextVal.replace(/<&sp>/g, ' ');
         loreTextVal = loreTextVal.replace(/<target.name>/g, target.getName());
@@ -20,7 +41,8 @@ var CheckLoreLine=function(target,mlc) {
 }
 
 var ReplaceLoreLine=function(data,target,mlc) {
-	var metaContent = target.getItemInHand().getItemMeta()
+	var baseContent = slotParser(target,mlc.getString("slot"));
+	var metaContent = baseContent.getItemMeta();
         var loreContent = metaContent.getLore();
 	if(loreContent.size() > mlc.getString("lorenum")) {
 		loreReplace = mlc.getString("loretext");
@@ -29,13 +51,14 @@ var ReplaceLoreLine=function(data,target,mlc) {
 		loreContent[mlc.getString("lorenum")] = loreReplace;
 		Bukkit.getServer().broadcastMessage(loreContent);
 		metaContent.setLore(loreContent);
-		target.getItemInHand().setItemMeta(metaContent);
+		baseContent.setItemMeta(metaContent);
 		return true;
 	}
 }
 
 var CompareLoreDate=function(target,mlc) {
-	var metaContent = target.getItemInHand().getItemMeta();
+	var baseContent = slotParser(target,mlc.getString("slot"));
+	var metaContent = baseContent.getItemMeta();
         var loreContent = metaContent.getLore();
 	var currentDate = new Date();
 	var currentDateMs = currentDate.getTime();
@@ -46,7 +69,7 @@ var CompareLoreDate=function(target,mlc) {
 	if(currentDateMs - dateThreshold > itemDateMs) {
 		loreContent[0] = currentDate.toString();
 		metaContent.setLore(loreContent);
-		target.getItemInHand().setItemMeta(metaContent);
+		baseContent.setItemMeta(metaContent);
 		return true;
 	}
 	else {
@@ -126,12 +149,13 @@ var BasicHungerCondition=function(target,mlc) {
 
 var SetItemColor=function(data,target,mlc) {
 	var Color = org.bukkit.Color;
-	var metaContent = target.getItemInHand().getItemMeta();
+	var baseContent = slotParser(target,mlc.getString("slot"));
+	var metaContent = baseContent.getItemMeta();
 	var inputContent = mlc.getString("color");
 	var redColor = parseInt(inputContent.substring(0,2), 16);
 	var greenColor = parseInt(inputContent.substring(2,4), 16);
 	var blueColor = parseInt(inputContent.substring(4,6), 16);
 	metaContent.setColor(Color.fromRGB(redColor, greenColor, blueColor));
-	target.getItemInHand().setItemMeta(metaContent);
+	baseContent.setItemMeta(metaContent);
 	return true;
 }
