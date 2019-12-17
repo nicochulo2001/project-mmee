@@ -4,15 +4,19 @@ This is a list of all the mechanics and conditions that are currently available.
 - It is important to define all the properties of a skill, as that will ensure that no errors occur.
 - If specified, the text must be quoted. Not quoting it will likely result in unintended behaviour.
 - All `#` are meant to be replaced by numbers. You mustn't include the `#`.
+## Slot System
+I've also added a slot system to allow these mechanics and conditions to apply to any inventory slot. Every time you see a condition or skill that uses `slot=#` you must apply a value, but you can choose from the following values:
+- One of the pre-programmed values in text form (no quotation marks), which are **HAND**, **OFFHAND**, **HELMET**, **CHESTPLATE**, **LEGGINGS** and **BOOTS**.
+- Any numerical value from 0 to 40 (others will likely return errors). To get the value of your slot, you can look [here](https://proxy.spigotmc.org/8d25a6d299b36fc40bfb9ffd9c2a21ea3ceb1128?url=http%3A%2F%2Fi.imgur.com%2FJDQnGk1.png)
 
 # Conditions
 ### CheckLoreLine
-**Syntax:** `- jscondition{js="CheckLoreLine";lorenum=#;loretext="Content"}`
+**Syntax:** `- jscondition{js="CheckLoreLine";lorenum=#;loretext="Content";slot=#}`
 
 **Description:** This condition will check the lore line specified in `lorenum` (0 being the first line) and compare it with `loretext`. It will return true if both strings match.
 
 ### CompareLoreDate
-**Syntax:** `- jscondition{js="CompareLoreDate";threshold=#}`
+**Syntax:** `- jscondition{js="CompareLoreDate";threshold=#;slot=#}`
 
 **Description:** This condition uses the first lore line of an item as a way to check the last time at which the condition was successful. It will then compare the lore time with the current time. If the time elapsed is equal or bigger than the `threshold` (specified in milliseconds), then the skill is successful and the current time is stored. This skill requires the item to already have a valid time in the first lore line. You can employ any time, but `Thu Jan 01 1970 01:00:00 GMT+0100 (CET)` is the best baseline (as it is equal to 0 milliseconds).
 
@@ -38,11 +42,11 @@ The default hunger value is 20.
 
 # Skills
 ### ReplaceLoreLine
-**Syntax:** `- jsmechanic{js="ReplaceLoreLine";lorenum=#;loretext="Content"}`
+**Syntax:** `- jsmechanic{js="ReplaceLoreLine";lorenum=#;loretext="Content";slot=#}`
 
 **Description:** This skill will replace the lore line specified in `lorenum` (0 being the first line) with the content of `loretext`. For this skill to work, said lore line must exist (for example, you can't replace the fourth line of lore of an item with two lines of lore).
 
 ### SetItemColor
-**Syntax:** `- jsmechanic{js="SetItemColor";color=000000}`
+**Syntax:** `- jsmechanic{js="SetItemColor";color=000000;slot=#}`
 
 **Description:** This skill will set the color of any dye-able item to the color specified in `color`. You must provide said color's hexadecimal value.
