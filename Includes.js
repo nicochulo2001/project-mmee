@@ -55,7 +55,6 @@ var ReplaceLoreLine=function(data,target,mlc) {
 		loreReplace = loreReplace.replace(/<&sp>/g, ' ');
 		loreReplace = loreReplace.substring(1,loreReplace.length - 1);
 		loreContent[mlc.getString("lorenum")] = loreReplace;
-		Bukkit.getServer().broadcastMessage(loreContent);
 		metaContent.setLore(loreContent);
 		baseContent.setItemMeta(metaContent);
 		return true;
@@ -151,6 +150,31 @@ var BasicHungerCondition=function(target,mlc) {
 			return false;
 			break;
 	}
+}
+
+var GetCraftingInv=function(target,mlc) {
+	var baseContent = target.getOpenInventory().getItem(mlc.getString("slot"));
+	var metaContent = baseContent.getItemMeta();
+	var materialVar = mlc.getString("material");
+	var amountVar = mlc.getString("amount");
+	var nameVar = mlc.getString("name");
+	var materialContent = baseContent.getType();
+	if(materialVar !== null) {
+		if(materialContent != materialVar) { return false; };
+	}
+	if(amountVar !== null) {
+		var amountContent = baseContent.getAmount();
+		if(amountContent != amountVar) { return false; };
+	}
+	if(nameVar !== null) {
+		if(metaContent === null) { return false; };
+		if(metaContent.hasDisplayName() === false) { return false; };
+		nameVar = nameVar.replace(/<&sp>/g, ' ');
+		nameVar = nameVar.substring(1,nameVar.length - 1);
+		var nameContent = metaContent.getDisplayName();
+		if(nameContent != nameVar) { return false; };
+	}
+	return true;
 }
 
 var SetItemColor=function(data,target,mlc) {
