@@ -40,6 +40,15 @@ The default air value (when not submerged underwater) is 300, and when it goes b
 
 The default hunger value is 20.
 
+### GetCraftingInv
+**Syntax:** `- jscondition{js="GetCraftingInv";slot=#;material=AIR;name="Name";amount=#}`
+
+**Notes:** 
+- `material`, `name` and `amount` are all optional, and you may include all of them or you may exclude them all (if you exclude them all, however, it'll always return true).
+- `slot` does not function the same as in all other conditions as it is the crafting inventory. You can pick any number between 0 to 5, 0 being the result and 1-4 being the crafting slots from top to bottom and left to right.
+
+**Description:** This condition checks the crafting inventory slot specified in `slot` for all the conditions provided: `material` takes any Spigot material you provide, `name` checks the name of the item (including color codes) and `amount` checks the amount.
+
 # Skills
 ### ReplaceLoreLine
 **Syntax:** `- jsmechanic{js="ReplaceLoreLine";lorenum=#;loretext="Content";slot=#}`
