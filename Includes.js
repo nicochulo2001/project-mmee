@@ -2,16 +2,22 @@ function slotParser(target,chosenslot) {
 	switch (chosenslot) {
 		case 'HAND':
 			return target.getItemInHand();
+			break;
 		case 'OFFHAND':
 			return target.getInventory().getItem(40);
+			break;
 		case 'HELMET':
 			return target.getInventory().getItem(39);
+			break;
 		case 'CHESTPLATE':
 			return target.getInventory().getItem(38);
+			break;
 		case 'LEGGINGS':
 			return target.getInventory().getItem(37);
+			break;
 		case 'BOOTS':
 			return target.getInventory().getItem(36);
+			break;
 		default:
 			if(isNaN(chosenslot) !== true) { return target.getInventory().getItem(chosenslot); }
 			else { return target.getItemInHand(); }
