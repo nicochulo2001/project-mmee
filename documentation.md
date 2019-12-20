@@ -44,10 +44,10 @@ The default hunger value is 20.
 **Syntax:** `- jscondition{js="GetCraftingInv";slot=#;material=AIR;name="Name";amount=#}`
 
 **Notes:** 
-- `material`, `name` and `amount` are all optional, and you may include all of them or you may exclude them all (if you exclude them all, however, it'll always return true).
-- `slot` does not function the same as in all other conditions as it is the crafting inventory. You can pick any number between 0 to 5, 0 being the result and 1-4 being the crafting slots from top to bottom and left to right.
+- `material`, `name` and `amount` are all optional, and you may include any combination of them or you may exclude them all (if you exclude them all, however, it'll always return true).
+- `slot` does not have the standard slot syntax as it is the crafting inventory. You can pick any number between 0 to 5, 0 being the resulting item and 1 to 4 being the crafting slots from top to bottom and left to right.
 
-**Description:** This condition checks the crafting inventory slot specified in `slot` for all the conditions provided: `material` takes any Spigot material you provide, `name` checks the name of the item (including color codes) and `amount` checks the amount.
+**Description:** This condition checks the crafting inventory slot specified in `slot` for all the conditions provided: `material` check the [Spigot material](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html), `name` checks the name of the item (including color codes) and `amount` checks the amount.
 
 # Skills
 ### ReplaceLoreLine
