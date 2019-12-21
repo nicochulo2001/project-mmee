@@ -59,3 +59,12 @@ The default hunger value is 20.
 **Syntax:** `- jsmechanic{js="SetItemColor";color=000000;slot=#}`
 
 **Description:** This skill will set the color of any dye-able item to the color specified in `color`. You must provide said color's hexadecimal value.
+
+### SetCraftingInv
+**Syntax:** `- jsmechanic{js="SetCraftingInv";material=AIR;amount=#;slot=#}`
+
+**Notes:**
+- `slot` does not have the standard slot syntax as it is the crafting inventory. You can pick any number between 0 to 5, 0 being the resulting item and 1 to 4 being the crafting slots from top to bottom and left to right. Number 0, however, will give very erratic behaviours so it is best to just give the resulting item through other methods.
+- This function was causing an error message to pop up even if the skill was successful, so I silenced all errors for this skill. Beware of this.
+
+**Description:** This skill will replace the contents of the crafting inventory slot specified in `slot` with the amount specified in `amount` of the item specified in `material`. `material` can be either the name of a MythicMobs item or a Spigot material.
