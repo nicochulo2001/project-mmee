@@ -177,6 +177,15 @@ var GetCraftingInv=function(target,mlc) {
 	return true;
 }
 
+var SetCraftingInv=function(data,target,mlc) {
+	try {
+		var baseMetaContent = mythicmobs.getItemManager().getItemStack(mlc.getString("material"));
+		baseMetaContent.setAmount(mlc.getString("amount"));
+		target.getOpenInventory().setItem(mlc.getString("slot"), baseMetaContent);
+	}
+	catch(err) { }
+}
+
 var SetItemColor=function(data,target,mlc) {
 	var Color = org.bukkit.Color;
 	var baseContent = slotParser(target,mlc.getString("slot"));
