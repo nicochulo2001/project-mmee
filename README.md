@@ -3,6 +3,7 @@ This is my first Github repository: **Project MMEE (Mythic Mobs Extension Extens
 
 To include these scripts, you must add them to `plugins\MythicMobsExtension\Includes.js` and restart MythicMobs.
 
+# Links
 [Mythic Mobs](http://www.mythicmobs.net/manual/doku.php)
 
 [Mythic Mobs Extension](https://www.spigotmc.org/resources/mythicmobsextension.51884/)
