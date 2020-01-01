@@ -74,6 +74,8 @@ Hydrid Mechanics (or Metadata Mechanics) are a new pseudotype of mechanic I've a
 Both conditions and skills flow from top to bottom, which means you can use their value in any of the conditions and skills listed above that support it. Those that support it offer `metavalue` in replacement of a certain field (you shouldn't declare both).
 
 ### SetEntityMetadata
-**Syntax:** ` - jsmechanic{js="SetEntityMetadataS";value=Value;key=Key}` or `- jscondition{js="SetEntityMetadataC";value=Value;key=Key}`
+**Syntax:**
+- `- jsmechanic{js="SetEntityMetadataS";value=Value;key=Key}`
+- `- jscondition{js="SetEntityMetadataC";value=Value;key=Key}`
 
 **Description:** Stores the value defined in `value` adressed to the value defined in `key`. You can later retrieve it using the same `key`.
