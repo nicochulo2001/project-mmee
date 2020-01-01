@@ -79,3 +79,10 @@ Both conditions and skills flow from top to bottom, which means you can use thei
 - `- jscondition{js="SetEntityMetadataC";value=Value;key=Key}`
 
 **Description:** Stores the value defined in `value` adressed to the value defined in `key`. You can later retrieve it using the same `key`.
+
+### RetrieveEntityMetadata
+**Syntax:**
+- `- jsmechanic{js="RetrieveEntityMetadataS";key=Key}`
+- `- jscondition{js="RetrieveEntityMetadataC";key=Key}`
+
+**Description:** Broadcasts the value stored in `key`. Note that this condition was made for testing purposes, yet it is left here as a tool to assess the value stored within `key`.
