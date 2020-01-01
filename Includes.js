@@ -24,6 +24,20 @@ function slotParser(target,chosenslot) {
 	}
 }
 
+function metadataGenerate(target,key,value) {
+	try {
+		var entityByBukkit = mythicmobs.worldManager.getEntity(target.getUniqueId());
+		var metadataSet = entityByBukkit.setMetadata(key,value);
+		return true;
+	}
+	catch(err) { }
+}
+
+function metadataReceive(target,key) {
+	var entityByBukkit = mythicmobs.worldManager.getEntity(target.getUniqueId());
+	return entityByBukkit.getMetadata(key);
+}
+
 var CheckLoreLine=function(target,mlc) {
 	var baseContent = slotParser(target,mlc.getString("slot"));
         var loreContent = baseContent.getItemMeta().getLore();
@@ -196,5 +210,33 @@ var SetItemColor=function(data,target,mlc) {
 	var blueColor = parseInt(inputContent.substring(4,6), 16);
 	metaContent.setColor(Color.fromRGB(redColor, greenColor, blueColor));
 	baseContent.setItemMeta(metaContent);
+	return true;
+}
+
+var SetEntityMetadataC=function(target,mlc) {
+	try {
+		var metadataSet = metadataGenerate(target,mlc.getString("key"),mlc.getString("value"));
+		return true;
+	}
+	catch(err) { }
+}
+
+var SetEntityMetadataS=function(data,target,mlc) {
+	try {
+		var metadataSet = metadataGenerate(target,mlc.getString("key"),mlc.getString("value"));
+		return true;
+	}
+	catch(err) { }
+}
+
+var RetrieveEntityMetadataC=function(target,mlc) {
+	var metadataGet = metadataReceive(target,mlc.getString("key"));
+	Bukkit.getServer().broadcastMessage(metadataGet.get());
+	return true;
+}
+
+var RetrieveEntityMetadataS=function(data,target,mlc) {
+	var metadataGet = metadataReceive(target,mlc.getString("key"));
+	Bukkit.getServer().broadcastMessage(metadataGet.get());
 	return true;
 }
