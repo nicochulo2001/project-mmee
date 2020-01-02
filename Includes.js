@@ -264,3 +264,50 @@ var RetrieveEntityMetadataS=function(data,target,mlc) {
 	Bukkit.getServer().broadcastMessage(metadataGet.get());
 	return true;
 }
+
+var RemoveLoreLineStringS=function(data,target,mlc) {
+	var baseContent = slotParser(target,mlc.getString("slot"));
+	var loreContent = baseContent.getItemMeta().getLore();
+	var loreHay = mlc.getString("loretext");
+	loreHay = loreHay.replace(/<&sp>/g, ' ');
+	loreHay = loreHay.substring(1,loreHay.length - 1);
+	Bukkit.getServer().broadcastMessage(loreHay);
+	if(loreContent === null || loreContent.size() <= mlc.getString("lorenum")) {
+		return false;
+	}
+	else {
+		var loreLine = loreContent.get(mlc.getString("lorenum"));
+		if(loreLine.contains(loreHay)) {
+			loreLine = loreLine.replace(loreHay,'');
+			var metadataSet = metadataGenerate(target,mlc.getString("key"),loreLine);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	return false;
+}
+
+var RemoveLoreLineStringC=function(target,mlc) {
+	var baseContent = slotParser(target,mlc.getString("slot"));
+	var loreContent = baseContent.getItemMeta().getLore();
+	var loreHay = mlc.getString("loretext");
+	loreHay = loreHay.replace(/<&sp>/g, ' ');
+	loreHay = loreHay.substring(1,loreHay.length - 1);
+	if(loreContent === null || loreContent.size() <= mlc.getString("lorenum")) {
+		return false;
+	}
+	else {
+		var loreLine = loreContent.get(mlc.getString("lorenum"));
+		if(loreLine.contains(loreHay)) {
+			loreLine = loreLine.replace(loreHay,'');
+			var metadataSet = metadataGenerate(target,mlc.getString("key"),loreLine);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	return false;
+}
