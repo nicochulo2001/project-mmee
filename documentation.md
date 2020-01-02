@@ -69,6 +69,15 @@ The default hunger value is 20.
 
 **Description:** This skill will replace the contents of the crafting inventory slot specified in `slot` with the amount specified in `amount` of the item specified in `material`. `material` can be either the name of a MythicMobs item or a Spigot material.
 
+## EntityNearNamed
+**Syntax:** `- jscondition{js="EntityNearNamed";radius=#;input=Name;inputM=key;type=ZOMBIE}`
+
+**Notes:**
+- `type` is optional.
+- You need to include either `input` (regular name) or `inputM` (metadata key) for the skill to work. It is not at all recommended to input both at the same time.
+
+**Description:** Checks in a radius of `radius` for the presence of at least one entity named `input` (or one whose name matches the metadata value of `inputM`). If provided, it will also check if its type matches the Bukkit entity type in `type`
+
 # Hybrid Mechanics
 Hydrid Mechanics (or Metadata Mechanics) are a new pseudotype of mechanic I've added: Depending on how you define them, you can use them to retrieve information for either a condition or a skill.
 Both conditions and skills flow from top to bottom, which means you can use their value in any of the conditions and skills listed above that support it. For those that support it, simply add `M` behind the specified field (for example, `value` becomes `valueM`). You can declare both variants at the same time but it is not at all recommended.
