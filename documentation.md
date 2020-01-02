@@ -87,11 +87,18 @@ Both conditions and skills flow from top to bottom, which means you can use thei
 - `- jsmechanic{js="SetEntityMetadataS";value="Value";key=Key}`
 - `- jscondition{js="SetEntityMetadataC";value="Value";key=Key}`
 
-**Description:** Stores the value defined in `value` adressed to the value defined in `key`. You can later retrieve it using the same `key`.
+**Description:** This mechanic stores the value defined in `value` adressed to the value defined in `key`. You can later retrieve it using the same `key`.
 
 ### RetrieveEntityMetadata
 **Syntax:**
 - `- jsmechanic{js="RetrieveEntityMetadataS";key=Key}`
 - `- jscondition{js="RetrieveEntityMetadataC";key=Key}`
 
-**Description:** Broadcasts the value stored in `key`. Note that this condition was made for testing purposes, yet it is left here as a tool to assess the value stored within `key`.
+**Description:** This mechanic broadcasts the value stored in `key`. Note that this condition was made for testing purposes, yet it is left here as a tool to assess the value stored within `key`.
+
+### RemoveLoreLineString
+**Syntax:**
+- `- jsmechanic{js="RemoveLoreLineStringS";lorenum=#;loretext="Content";key=Key;slot=#}`
+- `- jscondition{js="RemoveLoreLineStringC";lorenum=#;loretext="Content";key=Key;slot=#}`
+
+**Description:** This mechanic takes the lore line specified in `lorenum` (0 being the first line) and removes all instances of `loretext` within it. The result is then stored attached to `key`. Keep in mind that color codes will remain if you don't specify them.
