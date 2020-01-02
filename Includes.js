@@ -213,9 +213,32 @@ var SetItemColor=function(data,target,mlc) {
 	return true;
 }
 
+var EntityNearNamed=function(target,mlc) {
+	var Nearby = target.getNearbyEntities(mlc.getString("radius"),mlc.getString("radius"),mlc.getString("radius"));
+	if(mlc.getString("input") !== null) {
+		var check = mlc.getString("input");
+	}
+	if(mlc.getString("inputM") !== null) {
+		var check = metadataReceive(target,mlc.getString("inputM"));
+	}
+	for(i = 0; i < Nearby.length; i++) {
+		if(Nearby[i].getName() === check) {
+			if(mlc.getString("type") === null || mlc.getString("type") === String(Nearby[i].getType())) {
+				Bukkit.getServer().broadcastMessage("Success");
+				return true;
+			}
+		}
+	}
+	Bukkit.getServer().broadcastMessage("None Success");
+	return false;
+}
+
 var SetEntityMetadataC=function(target,mlc) {
 	try {
-		var metadataSet = metadataGenerate(target,mlc.getString("key"),mlc.getString("value"));
+		var processedValue = mlc.getString("value");
+		processedValue = processedValue.replace(/<&sp>/g, ' ');
+		processedValue = processedValue.substring(1,processedValue.length - 1);
+		var metadataSet = metadataGenerate(target,mlc.getString("key"),processedValue);
 		return true;
 	}
 	catch(err) { }
@@ -223,7 +246,10 @@ var SetEntityMetadataC=function(target,mlc) {
 
 var SetEntityMetadataS=function(data,target,mlc) {
 	try {
-		var metadataSet = metadataGenerate(target,mlc.getString("key"),mlc.getString("value"));
+		var processedValue = mlc.getString("value");
+		processedValue = processedValue.replace(/<&sp>/g, ' ');
+		processedValue = processedValue.substring(1,processedValue.length - 1);
+		var metadataSet = metadataGenerate(target,mlc.getString("key"),processedValue);
 		return true;
 	}
 	catch(err) { }
