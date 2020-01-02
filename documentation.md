@@ -49,7 +49,7 @@ The default hunger value is 20.
 
 **Description:** This condition checks the crafting inventory slot specified in `slot` for all the conditions provided: `material` check the [Spigot material](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html), `name` checks the name of the item (including color codes) and `amount` checks the amount.
 
-## EntityNearNamed
+### EntityNearNamed
 **Syntax:** `- jscondition{js="EntityNearNamed";radius=#;input=Name;inputM=key;type=ZOMBIE}`
 
 **Notes:**
