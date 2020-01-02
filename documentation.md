@@ -49,6 +49,15 @@ The default hunger value is 20.
 
 **Description:** This condition checks the crafting inventory slot specified in `slot` for all the conditions provided: `material` check the [Spigot material](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html), `name` checks the name of the item (including color codes) and `amount` checks the amount.
 
+## EntityNearNamed
+**Syntax:** `- jscondition{js="EntityNearNamed";radius=#;input=Name;inputM=key;type=ZOMBIE}`
+
+**Notes:**
+- `type` is optional.
+- You need to include either `input` (regular name) or `inputM` (metadata key) for the skill to work. It is not at all recommended to input both at the same time.
+
+**Description:** Checks in a radius of `radius` for the presence of at least one entity named `input` (or one whose name matches the metadata value of `inputM`). If provided, it will also check if its type matches the Spigot entity type in `type`.
+
 # Skills
 ### ReplaceLoreLine
 **Syntax:** `- jsmechanic{js="ReplaceLoreLine";lorenum=#;loretext="Content";slot=#}`
@@ -68,15 +77,6 @@ The default hunger value is 20.
 - This function was causing an error message to pop up even if the skill was successful, so I silenced all errors for this skill. Beware of this.
 
 **Description:** This skill will replace the contents of the crafting inventory slot specified in `slot` with the amount specified in `amount` of the item specified in `material`. `material` can be either the name of a MythicMobs item or a Spigot material.
-
-## EntityNearNamed
-**Syntax:** `- jscondition{js="EntityNearNamed";radius=#;input=Name;inputM=key;type=ZOMBIE}`
-
-**Notes:**
-- `type` is optional.
-- You need to include either `input` (regular name) or `inputM` (metadata key) for the skill to work. It is not at all recommended to input both at the same time.
-
-**Description:** Checks in a radius of `radius` for the presence of at least one entity named `input` (or one whose name matches the metadata value of `inputM`). If provided, it will also check if its type matches the Bukkit entity type in `type`
 
 # Hybrid Mechanics
 Hydrid Mechanics (or Metadata Mechanics) are a new pseudotype of mechanic I've added: Depending on how you define them, you can use them to retrieve information for either a condition or a skill.
