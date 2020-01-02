@@ -71,7 +71,7 @@ The default hunger value is 20.
 
 # Hybrid Mechanics
 Hydrid Mechanics (or Metadata Mechanics) are a new pseudotype of mechanic I've added: Depending on how you define them, you can use them to retrieve information for either a condition or a skill.
-Both conditions and skills flow from top to bottom, which means you can use their value in any of the conditions and skills listed above that support it. Those that support it offer `metavalue` in replacement of a certain field (you shouldn't declare both).
+Both conditions and skills flow from top to bottom, which means you can use their value in any of the conditions and skills listed above that support it. For those that support it, simply add `M` behind the specified field (for example, `value` becomes `valueM`). You can declare both variants at the same time but it is not at all recommended.
 
 ### SetEntityMetadata
 **Syntax:**
