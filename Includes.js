@@ -224,12 +224,10 @@ var EntityNearNamed=function(target,mlc) {
 	for(i = 0; i < Nearby.length; i++) {
 		if(Nearby[i].getName() === check) {
 			if(mlc.getString("type") === null || mlc.getString("type") === String(Nearby[i].getType())) {
-				Bukkit.getServer().broadcastMessage("Success");
 				return true;
 			}
 		}
 	}
-	Bukkit.getServer().broadcastMessage("None Success");
 	return false;
 }
 
