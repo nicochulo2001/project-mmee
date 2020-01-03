@@ -213,6 +213,11 @@ var SetItemColor=function(data,target,mlc) {
 	return true;
 }
 
+var MetaToVariable=function(data,target,mlc) {
+	var metadataGet = metadataReceive(target,mlc.getString("key"));
+	var newVariable = data.variables.putString(mlc.getString("varname"), metadataGet);
+}
+
 var EntityNearNamed=function(target,mlc) {
 	var Nearby = target.getNearbyEntities(mlc.getString("radius"),mlc.getString("radius"),mlc.getString("radius"));
 	if(mlc.getString("input") !== null) {
@@ -229,6 +234,49 @@ var EntityNearNamed=function(target,mlc) {
 		}
 	}
 	return false;
+}
+
+var CheckLoreLength=function(target,mlc) {
+	var operation = mlc.getString("checktype");
+	var baseContent = slotParser(target,mlc.getString("slot"));
+	var metaContent = baseContent.getItemMeta();
+	var loreContent = metaContent.getLore();
+	var loreCheckSize = mlc.getString("checkvalue");
+	if(loreContent === null) {
+		var loreSize = 0;
+	}
+	else {
+		var loreSize = loreContent.size();
+	}
+	switch (operation) {
+		case '>':
+			if(loreSize > loreCheckSize) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			break;
+		case '=':
+			if(loreSize == loreCheckSize) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			break;
+		case '<':
+			if(loreSize < loreCheckSize) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			break;
+		default:
+			return false;
+			break;
+	}
 }
 
 var SetEntityMetadataC=function(target,mlc) {
