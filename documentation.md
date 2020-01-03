@@ -20,6 +20,14 @@ I've also added a slot system to allow these mechanics and conditions to apply t
 
 **Description:** This condition uses the first lore line of an item as a way to check the last time at which the condition was successful. It will then compare the lore time with the current time. If the time elapsed is equal or bigger than the `threshold` (specified in milliseconds), then the skill is successful and the current time is stored. This skill requires the item to already have a valid time in the first lore line. You can employ any time, but `Thu Jan 01 1970 01:00:00 GMT+0100 (CET)` is the best baseline (as it is equal to 0 milliseconds).
 
+### CheckLoreLength
+**Syntax:** `- jscondition{js="CheckLoreLength";checktype=>;checkvalue=#;slot=#}`
+
+**Description:** This condition checks the amount of lore lines of the item found in `slot` and compares it to `checkvalue`. This check depends on the chosen `checktype`:
+- `>` will check if the amount of lore lines is bigger than `checkvalue`.
+- `=` will check if the amount of lore lines matches the `checkvalue`.
+- `<` will check if the amount of lore lines is smaller than `checkvalue`.
+
 ### BasicAirCondition
 **Syntax:** `- jscondition{js="BasicAirCondition";checktype=>;checkvalue=#}`
 
@@ -77,6 +85,11 @@ The default hunger value is 20.
 - This function was causing an error message to pop up even if the skill was successful, so I silenced all errors for this skill. Beware of this.
 
 **Description:** This skill will replace the contents of the crafting inventory slot specified in `slot` with the amount specified in `amount` of the item specified in `material`. `material` can be either the name of a MythicMobs item or a Spigot material.
+
+### MetaToVariable
+**Syntax:** `- jsmechanic{js="MetaToVariable";key=Key;varname=VarName}`
+
+**Description:** This skill will take the value attached to `key` and declare it as a variable named `varname`. You can later retrieve this value for its use in MM/MME skills and conditions as the placeholder `<skill.var.varname>` (where `varname` is the name provided for the variable).
 
 # Hybrid Mechanics
 Hydrid Mechanics (or Metadata Mechanics) are a new pseudotype of mechanic I've added: Depending on how you define them, you can use them to retrieve information for either a condition or a skill.
