@@ -40,24 +40,29 @@ function metadataReceive(target,key) {
 
 var CheckLoreLine=function(target,mlc) {
 	var baseContent = slotParser(target,mlc.getString("slot"));
-        var loreContent = baseContent.getItemMeta().getLore();
-        var loreTextVal = mlc.getString("loretext");
-        loreTextVal = loreTextVal.replace(/<&sp>/g, ' ');
-        loreTextVal = loreTextVal.replace(/<target.name>/g, target.getName());
-        if(loreContent === null || loreContent.size() <= mlc.getString("lorenum")) {
-                return false;
-        }
+	var loreContent = baseContent.getItemMeta().getLore();
+	if(mlc.getString("loretext") !== null) {
+		var loreTextVal = mlc.getString("loretext");
+		loreTextVal = loreTextVal.replace(/<&sp>/g, ' ');
+		loreTextVal = loreTextVal.substring(1,loreTextVal.length - 1);
+	}
+	else if(mlc.getString("loretextM") !== null) {
+		var loreTextVal = metadataReceive(target,mlc.getString("loretextM"));
+	}
+	loreTextVal = loreTextVal.replace(/<target.name>/g, target.getName());
+	if(loreContent === null || loreContent.size() <= mlc.getString("lorenum")) {
+		return false;
+	}
 	else {
-                var loreLine = loreContent.get(mlc.getString("lorenum"))
-                var detectedLoreLine = '"' + loreLine + '"'
-		if(detectedLoreLine === loreTextVal) {
+		var loreLine = loreContent.get(mlc.getString("lorenum"))
+		if(loreLine === loreTextVal) {
 			return true;
-                }
-                else {
-                        return false;
-             	}
-        }
-        return false;
+		}
+		else {
+			return false;
+		}
+	}
+	return false;
 }
 
 var ReplaceLoreLine=function(data,target,mlc) {
@@ -65,9 +70,14 @@ var ReplaceLoreLine=function(data,target,mlc) {
 	var metaContent = baseContent.getItemMeta();
         var loreContent = metaContent.getLore();
 	if(loreContent.size() > mlc.getString("lorenum")) {
-		loreReplace = mlc.getString("loretext");
-		loreReplace = loreReplace.replace(/<&sp>/g, ' ');
-		loreReplace = loreReplace.substring(1,loreReplace.length - 1);
+		if(mlc.getString("loretext") !== null) {
+			loreReplace = mlc.getString("loretext");
+			loreReplace = loreReplace.replace(/<&sp>/g, ' ');
+			loreReplace = loreReplace.substring(1,loreReplace.length - 1);
+		}
+		else if(mlc.getString("loretextM") !== null) {
+			loreReplace = metadataReceive(target,mlc.getString("loretextM"));
+		}
 		loreContent[mlc.getString("lorenum")] = loreReplace;
 		metaContent.setLore(loreContent);
 		baseContent.setItemMeta(metaContent);
