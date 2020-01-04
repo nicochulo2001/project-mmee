@@ -121,3 +121,15 @@ Both conditions and skills flow from top to bottom, which means you can use thei
 - `- jscondition{js="RemoveLoreLineStringC";lorenum=#;loretext="Content";key=Key;slot=#}`
 
 **Description:** This mechanic takes the lore line specified in `lorenum` (0 being the first line) and removes all instances of `loretext` within it. The result is then stored attached to `key`. Keep in mind that color codes will remain if you don't specify them.
+
+### RetrieveAsMeta
+**Syntax:**
+- `- jsmechanic{js="RetrieveAsMetaS";retrieve=name;key=Key}`
+- `- jscondition{js="RetrieveAsMetaC";retrieve=name;key=Key}`
+
+**Decription:** This mechanic retrieves a specific value and stores it in `key`. That value depends on the chosen `retrieve`:
+- `name` returns the name of the target.
+- `type` returns the Spigot type of the target.
+- `oxygen` returns the oxygen level of the target.
+- `hunger` returns the hunger value of the target.
+- `date` returns the server date.
