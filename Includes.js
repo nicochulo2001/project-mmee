@@ -311,6 +311,19 @@ var CheckLoreLength=function(target,mlc) {
 	}
 }
 
+var CompareEntityMetas=function(target,mlc) {
+	var firstMeta = metadataReceive(target,mlc.getString("key1"));
+	var secondMeta = metadataReceive(target,mlc.getString("key2"));
+	Bukkit.getServer().broadcastMessage(firstMeta);
+	Bukkit.getServer().broadcastMessage(secondMeta);
+	if(String(firstMeta) === String(secondMeta)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 var SetEntityMetadataC=function(target,mlc) {
 	try {
 		var processedValue = mlc.getString("value");
