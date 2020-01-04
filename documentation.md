@@ -13,7 +13,10 @@ I've also added a slot system to allow these mechanics and conditions to apply t
 ### CheckLoreLine
 **Syntax:** `- jscondition{js="CheckLoreLine";lorenum=#;loretext="Content";slot=#}`
 
-**Description:** This condition will check the lore line specified in `lorenum` (0 being the first line) and compare it with `loretext`. It will return true if both strings match.
+**Notes:** 
+- You need to include either `loretext` (regular text) or `loretextM` (metadata key). It is not at all recommended to input both at the same time.
+
+**Description:** This condition will check the lore line specified in `lorenum` (0 being the first line) and compare it with `loretext` (or the metadata value within `loretextM`) . It will return true if both strings match.
 
 ### CompareLoreDate
 **Syntax:** `- jscondition{js="CompareLoreDate";threshold=#;slot=#}`
@@ -70,7 +73,10 @@ The default hunger value is 20.
 ### ReplaceLoreLine
 **Syntax:** `- jsmechanic{js="ReplaceLoreLine";lorenum=#;loretext="Content";slot=#}`
 
-**Description:** This skill will replace the lore line specified in `lorenum` (0 being the first line) with the content of `loretext`. For this skill to work, said lore line must exist (for example, you can't replace the fourth line of lore of an item with two lines of lore).
+**Notes:**
+- You need to include either `loretext` (regular text) or `loretextM` (metadata key). It is not at all recommended to input both at the same time.
+
+**Description:** This skill will replace the lore line specified in `lorenum` (0 being the first line) with the content of `loretext` (or the metadata value within `loretextM`). For this skill to work, said lore line must exist (for example, you can't replace the fourth line of lore of an item with two lines of lore).
 
 ### SetItemColor
 **Syntax:** `- jsmechanic{js="SetItemColor";color=000000;slot=#}`
