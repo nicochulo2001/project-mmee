@@ -38,6 +38,28 @@ function metadataReceive(target,key) {
 	return entityByBukkit.getMetadata(key);
 }
 
+function dataretrieveParser(target,retrieve) {
+	switch (retrieve) {
+		case 'name':
+			return target.getName();
+			break;
+		case 'type':
+			return target.getType();
+			break;
+		case 'oxygen':
+			return target.getRemainingAir();
+			break;
+		case 'hunger':
+			return target.getFoodLevel();
+			break;
+		case 'date':
+			return new Date();
+			break;
+		default:
+			return "Not Found";
+	}
+}
+
 var CheckLoreLine=function(target,mlc) {
 	var baseContent = slotParser(target,mlc.getString("slot"));
 	var loreContent = baseContent.getItemMeta().getLore();
@@ -368,4 +390,16 @@ var RemoveLoreLineStringC=function(target,mlc) {
 		}
 	}
 	return false;
+}
+
+var RetrieveAsMetaS=function(data,target,mlc) {
+	var retrieveContent = dataretrieveParser(target,mlc.getString("retrieve"));
+	var metadataSet = metadataGenerate(target,mlc.getString("key"),retrieveContent);
+	return true;
+}
+
+var RetrieveAsMetaC=function(target,mlc) {
+	var retrieveContent = dataretrieveParser(target,mlc.getString("retrieve"));
+	var metadataSet = metadataGenerate(target,mlc.getString("key"),retrieveContent);
+	return true;
 }
