@@ -67,7 +67,12 @@ The default hunger value is 20.
 - `type` is optional.
 - You need to include either `input` (regular name) or `inputM` (metadata key) for the skill to work. It is not at all recommended to input both at the same time.
 
-**Description:** Checks in a radius of `radius` for the presence of at least one entity named `input` (or one whose name matches the metadata value of `inputM`). If provided, it will also check if its type matches the Spigot entity type in `type`.
+**Description:** This condition checks in a radius of `radius` for the presence of at least one entity named `input` (or one whose name matches the metadata value of `inputM`). If provided, it will also check if its type matches the Spigot entity type in `type`.
+
+### CompareEntityMetas
+**Syntax:** `- jscondition{js="CompareEntityMetas";key1=Key1;key2=Key2}`
+
+**Description:** This condition compares the values stored in two entity metas (provided in `key1` and `key2`). It will return true if both values match.
 
 # Skills
 ### ReplaceLoreLine
