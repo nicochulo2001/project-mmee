@@ -8,6 +8,8 @@ To include these scripts, you must add them to `plugins\MythicMobsExtension\Incl
 
 [Mythic Mobs Extension](https://www.spigotmc.org/resources/mythicmobsextension.51884/)
 
+[Video Demonstration of SetItemColor](https://youtu.be/O-tK3leoF08)
+
 # Credits
 I wanted to include a small list of user whose help has directly or indirectly influenced the development of this project:
 - `@BerndiVader#7331` for actively pushing MME commits and for helping me understand the API.
