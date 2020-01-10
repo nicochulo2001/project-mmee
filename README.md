@@ -12,6 +12,8 @@ To include these scripts, you must add them to `plugins\MythicMobsExtension\Incl
 
 [Video Demonstration of EntityNearNamed](https://youtu.be/3lLT0CDCh9o)
 
+[Video Demonstration of GetCraftinvInv](https://youtu.be/TyXdiXGTY8U)
+
 # Credits
 I wanted to include a small list of user whose help has directly or indirectly influenced the development of this project:
 - `@BerndiVader#7331` for actively pushing MME commits and for helping me understand the API.
