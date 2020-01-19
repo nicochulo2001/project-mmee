@@ -20,4 +20,4 @@ I wanted to include a small list of user whose help has directly or indirectly i
 - `@BerndiVader#7331` for actively pushing MME commits and for helping me understand the API.
 - `@RogerPlaysMC#1649` for pointing me to the Spigot API.
 - `@Magnus Frost#4005` for pointing me towards useful documentation.
-- `@Grima#3467` and `@爛爛#9986`, as I've implemented some of their suggestions.
+- `@Grima#3467`, `@爛爛#9986` and `@cookieXL#2307` as I've implemented some of their suggestions.
