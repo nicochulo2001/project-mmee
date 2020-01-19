@@ -51,6 +51,14 @@ The default air value (when not submerged underwater) is 300, and when it goes b
 
 The default hunger value is 20.
 
+### BasicXPCondition
+**Syntax:** `- jscondition{js="BasicXPCondition";checktype=>;checkvalue=#}`
+
+**Description:** This condition checks the amount of XP levels and compares it to `checkvalue`. This check depends on the chosen `checktype`:
+- `>` will check if your current XP level value is bigger than `checkvalue`.
+- `=` will check if your current XP level value matches the `checkvalue`.
+- `<` will check if your current XP level value is smaller than `checkvalue`.
+
 ### GetCraftingInv
 **Syntax:** `- jscondition{js="GetCraftingInv";slot=#;material=AIR;name="Name";amount=#}`
 
@@ -83,6 +91,14 @@ The default hunger value is 20.
 
 **Description:** This skill will replace the lore line specified in `lorenum` (0 being the first line) with the content of `loretext` (or the metadata value within `loretextM`). For this skill to work, said lore line must exist (for example, you can't replace the fourth line of lore of an item with two lines of lore).
 
+### AppendLoreLine
+**Syntax:** `- jsmechanic{js="AppendLoreLine";lorenum=#;loretext="Content";slot=#}`
+
+**Notes:**
+- You need to include either `loretext` (regular text) or `loretextM` (metadata key). It is not at all recommended to input both at the same time.
+
+**Description:** This skill will add the text specified in `loretext` (or the metadata value within `loretextM`) to the lore line specified in `lorenum` (0 being the first line). For this skill to work, said lore line must exist (for example, you can't append the fourth line of lore of an item with two lines of lore).
+
 ### SetItemColor
 **Syntax:** `- jsmechanic{js="SetItemColor";color=000000;slot=#}`
 
@@ -101,6 +117,14 @@ The default hunger value is 20.
 **Syntax:** `- jsmechanic{js="MetaToVariable";key=Key;varname=VarName}`
 
 **Description:** This skill will take the value attached to `key` and declare it as a variable named `varname`. You can later retrieve this value for its use in MM/MME skills and conditions as the placeholder `<skill.var.varname>` (where `varname` is the name provided for the variable).
+
+### TransmuteItem
+**Syntax:** `- jsmechanic{js="TransmuteItem";base=OAK_PLANKS;result=SPRUCE_PLANKS;amount=#}`
+
+**Notes:**
+- Under normal conditions, an `amount` value greater than the maximum stack amount of the target item will ensure the mechanic never works (usually this number is 64)
+
+**Description:** This skill will remove `amount` items with the [Spigot](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html) or MM material specified in `base` from the inventory of the targeted entity and give them `amount` items of `result`. It will not give the items unless it is able to find enough items of the `base` material.
 
 # Hybrid Mechanics
 Hydrid Mechanics (or Metadata Mechanics) are a new pseudotype of mechanic I've added: Depending on how you define them, you can use them to retrieve information for either a condition or a skill.
