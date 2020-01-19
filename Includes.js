@@ -107,6 +107,26 @@ var ReplaceLoreLine=function(data,target,mlc) {
 	}
 }
 
+var AppendLoreLine=function(data,target,mlc) {
+	var baseContent = slotParser(target,mlc.getString("slot"));
+	var metaContent = baseContent.getItemMeta();
+	var loreContent = metaContent.getLore();
+	if(loreContent.size() > mlc.getString("lorenum")) {
+		if(mlc.getString("loretext") !== null) {
+			loreReplace = mlc.getString("loretext");
+			loreReplace = loreReplace.replace(/<&sp>/g, ' ');
+			loreReplace = loreReplace.substring(1,loreReplace.length - 1);
+		}
+		else if(mlc.getString("loretextM") !== null) {
+			loreReplace = metadataReceive(target,mlc.getString("loretextM"));
+		}
+		loreContent[mlc.getString("lorenum")] = loreContent[mlc.getString("lorenum")] + loreReplace;
+		metaContent.setLore(loreContent);
+		baseContent.setItemMeta(metaContent);
+		return true;
+	}
+}
+
 var CompareLoreDate=function(target,mlc) {
 	var baseContent = slotParser(target,mlc.getString("slot"));
 	var metaContent = baseContent.getItemMeta();
@@ -198,6 +218,41 @@ var BasicHungerCondition=function(target,mlc) {
 	}
 }
 
+var BasicXPCondition=function(target,mlc) {
+	var XPValue = target.getLevel();
+	var operation = mlc.getString("checktype");
+	var XPCheckValue = mlc.getString("checkvalue");
+	switch (operation) {
+		case '>':
+			if(XPValue > XPCheckValue) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			break;
+		case '=':
+			if(XPValue == XPCheckValue) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			break;
+		case '<':
+			if(XPValue < XPCheckValue) {
+				return true;
+			}
+			else {
+				return false;
+			}
+			break;
+		default:
+			return false;
+			break;
+	}
+}
+
 var GetCraftingInv=function(target,mlc) {
 	var baseContent = target.getOpenInventory().getItem(mlc.getString("slot"));
 	var metaContent = baseContent.getItemMeta();
@@ -248,6 +303,26 @@ var SetItemColor=function(data,target,mlc) {
 var MetaToVariable=function(data,target,mlc) {
 	var metadataGet = metadataReceive(target,mlc.getString("key"));
 	var newVariable = data.variables.putString(mlc.getString("varname"), metadataGet);
+}
+
+var TransmuteItem=function(data,target,mlc) {
+	var baseContent = target.getInventory();
+	var invContent = baseContent.getContents();
+	var transmuteAmount = mlc.getString("amount");
+	var baseMaterial = mythicmobs.getItemManager().getItemStack(mlc.getString("base"));
+	var transmuteMaterial = mythicmobs.getItemManager().getItemStack(mlc.getString("result"));
+	transmuteMaterial.setAmount(transmuteAmount);
+	for(i = 0; i < invContent.length; i++) {
+		if(invContent[i] !== null && invContent[i].isSimilar(baseMaterial)) {
+			var matchAmount = invContent[i].getAmount();
+			if(matchAmount - transmuteAmount >= 0) {
+				invContent[i].setAmount(matchAmount - transmuteAmount);
+				baseContent.setItem(i, invContent[i]);
+				baseContent.addItem(transmuteMaterial);
+				return true;
+			}
+		}
+	}
 }
 
 var EntityNearNamed=function(target,mlc) {
