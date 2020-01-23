@@ -82,6 +82,11 @@ The default hunger value is 20.
 
 **Description:** This condition compares the values stored in two entity metas (provided in `key1` and `key2`). It will return true if both values match.
 
+### CheckItemNear
+**Syntax:** `- jscondition{js="CheckItemNear";radius=#;material=OAK_PLANKS;amount=#}`
+
+**Description:** This condition checks each dropped item in a radius of `radius` and returns true if it finds an item whose amount is `amount` and whose material is `material`. If the provided material is a [Spigot material](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html), it'll return true even if the item has additional attributes (like name or lore). If the provided material is an MM material, it requires an exact match.
+
 # Skills
 ### ReplaceLoreLine
 **Syntax:** `- jsmechanic{js="ReplaceLoreLine";lorenum=#;loretext="Content";slot=#}`
@@ -125,6 +130,11 @@ The default hunger value is 20.
 - Under normal conditions, an `amount` value greater than the maximum stack amount of the target item will ensure the mechanic never works (usually this number is 64)
 
 **Description:** This skill will remove `amount` items with the [Spigot](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html) or MM material specified in `base` from the inventory of the targeted entity and give them `amount` items of `result`. It will not give the items unless it is able to find enough items of the `base` material.
+
+### DeleteItemNear
+**Syntax:** `- jsmechanic{js="DeleteItemNear";radius=#;material=OAK_PLANKS;amount=#}`
+
+**Description:** This condition checks each dropped item in a radius of `radius` and deletes the first item whose amount is `amount` and whose material is `material`. If the provided material is a [Spigot material](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html), it'll return true even if the item has additional attributes (like name or lore). If the provided material is an MM material, it requires an exact match.
 
 # Hybrid Mechanics
 Hydrid Mechanics (or Metadata Mechanics) are a new pseudotype of mechanic I've added: Depending on how you define them, you can use them to retrieve information for either a condition or a skill.
