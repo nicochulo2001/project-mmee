@@ -343,6 +343,43 @@ var EntityNearNamed=function(target,mlc) {
 	return false;
 }
 
+var CheckItemNear=function(target,mlc) {
+	var Nearby = target.getNearbyEntities(mlc.getString("radius"),mlc.getString("radius"),mlc.getString("radius"));
+	var check = mlc.getString("material");
+	var checkAmount = mlc.getString("amount");
+	for(i = 0; i < Nearby.length; i++) {
+		if(String(Nearby[i].getType()) === "DROPPED_ITEM") {
+			var materialType = Nearby[i].getItemStack().getType();
+			var matchStack = Nearby[i].getItemStack();
+			var checkStack = mythicmobs.getItemManager().getItemStack(check);
+			checkStack.setAmount(checkAmount);
+			if((String(materialType) === check && matchStack.getAmount() === parseInt(checkAmount)) || checkStack.equals(matchStack)) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+var DeleteItemNear=function(data,target,mlc) {
+	var Nearby = target.getNearbyEntities(mlc.getString("radius"),mlc.getString("radius"),mlc.getString("radius"));
+	var check = mlc.getString("material");
+	var checkAmount = mlc.getString("amount");
+	for(i = 0; i < Nearby.length; i++) {
+		if(String(Nearby[i].getType()) === "DROPPED_ITEM") {
+			var materialType = Nearby[i].getItemStack().getType();
+			var matchStack = Nearby[i].getItemStack();
+			var checkStack = mythicmobs.getItemManager().getItemStack(check);
+			checkStack.setAmount(checkAmount);
+			if((String(materialType) === check && matchStack.getAmount() === parseInt(checkAmount)) || checkStack.equals(matchStack)) {
+				matchStack.setAmount(0);
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 var CheckLoreLength=function(target,mlc) {
 	var operation = mlc.getString("checktype");
 	var baseContent = slotParser(target,mlc.getString("slot"));
